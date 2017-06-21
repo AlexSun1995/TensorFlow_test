@@ -26,7 +26,37 @@ def test_0():
         print('*******this is the bias value:', b1)
 
 
-def test_of_higher_dimension():
+def two_dimensional_linear_regression():
+    X = tf.placeholder(dtype=np.float32, shape=[None, 1])
+    Y = tf.placeholder(dtype=np.float32, shape=[None, 1])
+    W = tf.Variable(tf.random_uniform([1, 1]), name='weight')
+    b = tf.Variable(tf.zeros([1]), name='bias')
+    activation = tf.matmul(X, W) + b
+    cost = tf.reduce_mean(tf.square(activation - Y))
+    optimizer = tf.train.AdamOptimizer(learning_rate=0.5).minimize(cost)
+    training_x = np.linspace(start=0.0, stop=1000.0, num=2000)
+    training_y = np.array([i * 3.0 + 2.0 for i in training_x])
+    # this is important, your feed_data must matching the shape of
+    # X,Y
+    training_x = training_x.reshape([-1, 1])
+    training_y = training_y.reshape([-1, 1])
+    batch_size = 200
+    steps = 2000
+    with tf.Session() as sess:
+        init = tf.global_variables_initializer()
+        sess.run(init)
+        total_data_size = len(training_x)
+        for i in range(steps):
+            p = 0 # p denote the position where we begin to get data in training data set
+            while p < total_data_size:
+                _o, _w, _b = sess.run([optimizer, W, b], feed_dict={X:training_x[p: p+batch_size].copy(),
+                                                       Y:training_y[p:p+batch_size].copy()
+                                                       })
+                p += batch_size
+                print(_w,_b)
+
+
+def three_dimension_regression():
     W = tf.Variable(tf.random_uniform([1, 2], -1.0, 1.0))
     b = tf.Variable(tf.zeros([1]))
     training_x = np.float32(np.random.rand(2, 100))
@@ -47,5 +77,6 @@ def test_of_higher_dimension():
 
 
 if __name__ == '__main__':
-    test_of_higher_dimension()
+    # three_dimension_regression()
+    two_dimensional_linear_regression()
 
