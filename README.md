@@ -29,7 +29,7 @@ before I leave college.
     the data comes from iris data set
 ```
 
-**2017/6/24, longhe campus, ahu
+** 2017/6/24, longhe campus, ahu
 I mark down the time and location in order to memorize my college times.
 thanks my friends, teachers, and all the wonderful people I meet here..
 thanks time!
