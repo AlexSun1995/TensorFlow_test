@@ -29,8 +29,11 @@ before I leave college.
     the data comes from iris data set
 ```
 
-## 2017-6-24, Longhe Campus Anhui University
-I mark down the time and location in order to memorize my college times!
+**2017/6/24, longhe campus, ahu
+I mark down the time and location in order to memorize my college times.
+thanks my friends, teachers, and all the wonderful people I meet here..
+thanks time!
+**
 ```
     def goodbye_ahu():
         print('from 2013-8-27 to 2017-6-26')
